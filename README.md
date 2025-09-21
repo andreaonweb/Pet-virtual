@@ -1,12 +1,35 @@
-# React + Vite
+# Virtual Pet 🐾  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple **virtual pet application** built with **React + Vite + Bootstrap**.  
+Take care of your pet by **feeding**, **petting**, and **playing** with it. Keep it happy and watch its mood change depending on your actions!  
 
-Currently, two official plugins are available:
+---
+## 📸 Preview
+<img width="1712" height="870" alt="image" src="https://github.com/user-attachments/assets/f292c923-22e6-48a8-9bdd-f18b865dda53" />
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features  
+- 🥩 **Feed your pet** to keep it full.  
+- 🤗 **Pet your friend** to raise happiness.  
+- 🎮 **Play together** to reduce boredom.  
+- 😺 Dynamic UI updates depending on your pet’s state.  
+- 🎨 Clean and responsive design powered by **Bootstrap**.  
+- ⚡ Fast and modern development setup with **Vite**.  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack  
+- [React](https://react.dev/) – UI library  
+- [Vite](https://vitejs.dev/) – Development bundler  
+- [Bootstrap](https://getbootstrap.com/) – Styling and layout  
+
+---
+
+## 📂 Project Setup  
+
+### 1. Clone the repo  
+```bash
+git clone https://github.com/andreaonweb/virtual-pet.git
+cd virtual-pet
+npm install
+npm run dev
+Then open your browser at http://localhost:5173/
