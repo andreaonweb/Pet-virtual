@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import frameImage from '../assets/FrameMain.png';
 import Needs from './Needs';
-import FoxPet from './FoxPet';
+import GenericPet from './GenericPet';
 import ActionButtons from './ActionButtons';
+import PetSelector from './PetSelector';
 
-function Frame({ petStats, setPetStats }) {
+function Frame({ petStats, setPetStats, currentPet, onPetChange, allPetStats }) {
   const [petAnimationTrigger, setPetAnimationTrigger] = useState(0);
   const [lastActionType, setLastActionType] = useState('pet');
+  const [selectedPet, setSelectedPet] = useState(currentPet || 'fox'); // Estado para la mascota seleccionada
 
   // Función para manejar acciones y activar animaciones
   const handlePetAction = (actionType) => {
@@ -14,7 +16,7 @@ function Frame({ petStats, setPetStats }) {
     setPetAnimationTrigger(prev => prev + 1);
   };
 
-  // Función para cuando se hace click directo en el zorro
+  // Función para cuando se hace click directo en la mascota
   const handleDirectPetClick = () => {
     setLastActionType('pet');
     setPetStats(prevStats => ({
@@ -23,12 +25,28 @@ function Frame({ petStats, setPetStats }) {
     }));
   };
 
+  // Función para cambiar de mascota
+  const handlePetChange = (newPetType) => {
+    setSelectedPet(newPetType);
+    if (onPetChange) onPetChange(newPetType); // Notificar al App
+    // Opcional: resetear animaciones al cambiar de mascota
+    setPetAnimationTrigger(prev => prev + 1);
+    setLastActionType('pet');
+  };
+
   return (
     <div className="position-relative d-flex justify-content-center align-items-center">
       <img
         src={frameImage}
         alt="A decorative frame for the virtual pet"
         className="img-fluid"
+      />
+      
+      {/* Selector de mascotas */}
+      <PetSelector 
+        selectedPet={selectedPet}
+        onPetChange={handlePetChange}
+        allPetStats={allPetStats}
       />
       
       {/* Barras de necesidades */}
@@ -44,7 +62,7 @@ function Frame({ petStats, setPetStats }) {
         <Needs petStats={petStats} />
       </div>
 
-      {/* Zorro con animaciones específicas */}
+      {/* Mascota genérica con animaciones específicas */}
       <div 
         className="position-absolute d-flex justify-content-center w-100"
         style={{
@@ -55,7 +73,8 @@ function Frame({ petStats, setPetStats }) {
           zIndex: 5
         }}
       >
-        <FoxPet 
+        <GenericPet 
+          petType={selectedPet}
           petStats={petStats} 
           onInteract={handleDirectPetClick}
           triggerAnimation={petAnimationTrigger}
